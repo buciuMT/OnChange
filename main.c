@@ -8,7 +8,7 @@ void get_status(int count, char **files, long long int res[]) {
   struct stat s;
   for (int i = 0; i < count; i++) {
     stat(files[i], &s);
-    res[i] = s.st_mtim.tv_nsec;
+    res[i] = s.st_mtim.tv_sec;
   }
 }
 
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
   cmd_buffer[cmd_ptr] = '\0';
 
   long long int tbuf1[argc - cmd_start], tbuf2[argc - cmd_start];
-  long long int *last = tbuf1, *current = tbuf2, *aux = NULL;
+  long long int *last = tbuf1, *current = tbuf2;
 
   char **files = argv + 1;
   int file_count = cmd_start - 1;
@@ -67,9 +67,7 @@ int main(int argc, char **argv) {
       if (current[i] > last[i]) {
         printf("\n[UPDATE]: `%s`\n\n", cmd_buffer);
         system(cmd_buffer);
-        aux = current;
-        current = last;
-        last = aux;
+        get_status(file_count, files, last);
       }
   }
   return 0;
