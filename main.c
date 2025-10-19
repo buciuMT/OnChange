@@ -48,12 +48,12 @@ int main(int argc, char **argv) {
 
     memcpy(cmd_buffer + cmd_ptr, argv[i], len);
     cmd_buffer[cmd_ptr += len] = ' ';
-    cmd_ptr++;
+    ++cmd_ptr;
   }
 
   cmd_buffer[cmd_ptr] = '\0';
 
-  long long int tbuf1[argc - cmd_start], tbuf2[argc - cmd_start];
+  long long int tbuf1[argc - cmd_start + 1], tbuf2[argc - cmd_start + 1];
   long long int *last = tbuf1, *current = tbuf2;
 
   char **files = argv + 1;
