@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
 
   cmd_buffer[cmd_ptr] = '\0';
 
-  long long int tbuf1[argc - cmd_start + 1], tbuf2[argc - cmd_start + 1];
+  long long int tbuf1[cmd_start + 1], tbuf2[cmd_start + 1];
   long long int *last = tbuf1, *current = tbuf2;
 
   char **files = argv + 1;
