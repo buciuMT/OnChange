@@ -5,7 +5,7 @@
 #include <time.h>
 
 int help() {
-  printf("./file_watcher [options] [files...] -- [command]\n");
+  printf("onchange [options] [files...] -- [command]\n");
   return 0;
 }
 
