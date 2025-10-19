@@ -4,6 +4,11 @@
 #include <sys/stat.h>
 #include <time.h>
 
+int help() {
+  printf("./file_watcher [options] [files...] -- [command]\n");
+  return 0;
+}
+
 void get_status(int count, char **files, long long int res[]) {
   struct stat s;
   for (int i = 0; i < count; i++) {
@@ -13,6 +18,8 @@ void get_status(int count, char **files, long long int res[]) {
 }
 
 int main(int argc, char **argv) {
+  if (argc <= 1)
+    return help();
   int cmd_start = argc + 1, files_len = 0;
   for (int i = 1; i < argc; i++) {
     if (!strcmp("--", argv[i])) {
