@@ -11,7 +11,6 @@ Small program that triggers a command on a modification of any watched file.
 ```sh
 ./file_watcher [options] [files...] -- [command]
 ```
-```
 
 ### Example
 ```sh
