@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <time.h>
+#include <unistd.h>
 
 int help() {
   printf("onchange [options] [files...] -- [command]\n");
@@ -70,7 +71,7 @@ int main(int argc, char **argv) {
 
   for (;;) {
     get_status(file_count, files, current);
-    for (int i = 0; i < file_count; i++)
+    for (int i = 0; usleep(10000), i < file_count; i++)
       if (current[i] > last[i]) {
         printf("\n[UPDATE]: `%s`\n\n", cmd_buffer);
         system(cmd_buffer);
